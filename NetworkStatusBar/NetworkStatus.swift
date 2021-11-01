@@ -42,6 +42,8 @@ open class NetworkDetails{
         process.executableURL = URL.init(fileURLWithPath: "/usr/bin/nettop")
         let pipe = Pipe()
         process.standardOutput = pipe
+        process.standardError = pipe
+        process.standardInput = Pipe()
         Task{
             var data = Data()
             for  try await line  in pipe.fileHandleForReading.bytes.lines{

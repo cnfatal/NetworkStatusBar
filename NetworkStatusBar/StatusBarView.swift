@@ -33,8 +33,19 @@ struct StatusBarView_Previews: PreviewProvider {
     }
 }
 
+
+let formatter = { () -> ByteCountFormatter in
+    var formatter = ByteCountFormatter.init()
+    formatter.allowsNonnumericFormatting = false
+    formatter.countStyle = .binary
+    return formatter
+}()
+
 func formatbytes(_ bytes:Int)->String {
+    if bytes < 1024 {
+        return "0KB/s"
+    }
     return String(format: "%@/s", arguments: [
-        ByteCountFormatter.string(fromByteCount: Int64(bytes), countStyle: ByteCountFormatter.CountStyle.binary)
+        formatter.string(fromByteCount: Int64(bytes))
     ])
  }
