@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BE3EC903272FA6E6005AC578 /* NetworkStatusBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */; };
-		BE3EC905272FA6E6005AC578 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC904272FA6E6005AC578 /* ContentView.swift */; };
 		BE3EC907272FA6E7005AC578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC906272FA6E7005AC578 /* Assets.xcassets */; };
 		BE3EC90A272FA6E7005AC578 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC909272FA6E7005AC578 /* Preview Assets.xcassets */; };
 		BE3EC915272FA6E7005AC578 /* NetworkStatusBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC914272FA6E7005AC578 /* NetworkStatusBarTests.swift */; };
@@ -40,7 +39,6 @@
 /* Begin PBXFileReference section */
 		BE3EC8FF272FA6E6005AC578 /* NetworkStatusBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkStatusBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarApp.swift; sourceTree = "<group>"; };
-		BE3EC904272FA6E6005AC578 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BE3EC906272FA6E7005AC578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE3EC909272FA6E7005AC578 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE3EC90B272FA6E7005AC578 /* NetworkStatusBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetworkStatusBar.entitlements; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				BE3EC937272FA827005AC578 /* Localizable.strings */,
 				BE3EC92F272FA7B8005AC578 /* NetworkStatus.swift */,
 				BE3EC930272FA7B8005AC578 /* StatusBarDetailsView.swift */,
-				BE3EC904272FA6E6005AC578 /* ContentView.swift */,
 				BE3EC906272FA6E7005AC578 /* Assets.xcassets */,
 				BE3EC90B272FA6E7005AC578 /* NetworkStatusBar.entitlements */,
 				BE3EC908272FA6E7005AC578 /* Preview Content */,
@@ -275,7 +272,6 @@
 			files = (
 				BE3EC932272FA7B8005AC578 /* NetworkStatus.swift in Sources */,
 				BE3EC92E272FA7A2005AC578 /* StatusBarView.swift in Sources */,
-				BE3EC905272FA6E6005AC578 /* ContentView.swift in Sources */,
 				BE3EC903272FA6E6005AC578 /* NetworkStatusBarApp.swift in Sources */,
 				BE3EC933272FA7B8005AC578 /* StatusBarDetailsView.swift in Sources */,
 			);
@@ -447,7 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = NetworkStatusBar/NetworkStatusBar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = NetworkStatusBar/NetworkStatusBarDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -459,7 +455,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.fatalc.NetworkStatusBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -477,6 +474,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NetworkStatusBar/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -484,7 +482,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.fatalc.NetworkStatusBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
