@@ -15,7 +15,7 @@ struct NetworkStatusBarApp: App {
     }
 }
 
-var StatusBarWidth = CGFloat(60)
+var StatusBarWidth = CGFloat(49)
 
 class AppDelegate :NSObject, NSApplicationDelegate{
 
