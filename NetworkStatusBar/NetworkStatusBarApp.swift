@@ -11,9 +11,7 @@ import SwiftUI
 struct NetworkStatusBarApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appdelegate
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        WindowGroup {}
     }
 }
 
@@ -58,7 +56,10 @@ class AppDelegate :NSObject, NSApplicationDelegate{
                 {
                     let menuitem = NSMenuItem()
                     menuitem.view = NSHostingView(rootView: StatusBarDetailsView(iostates: iostates))
-                    menuitem.view?.setFrameSize(NSSize(width: 210, height: 300))
+                    // ListTableCellView has 16dp at left and right,ListScroll has a 15dp width
+                    // 16 * 2 + 15 = 47
+                    // Out DetailsItem has min length 200
+                    menuitem.view?.setFrameSize(NSSize(width: 247, height: 300))
                     return menuitem
                 }(),
                 NSMenuItem(

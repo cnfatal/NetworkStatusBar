@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TabularData
 
 struct StatusBarDetailsView: View {
     @ObservedObject var iostates = IOStates()
@@ -23,14 +24,14 @@ struct StatusBarDetailsItemView: View{
     var body: some View{
         HStack(alignment: VerticalAlignment.center, spacing: 0){
             Text(state.name)
-                .frame(width:120,alignment: Alignment.leading)
+                .frame(width:140,alignment: Alignment.leading)
             VStack(alignment: .trailing){
                 Text(String(format: "%@ ▲", arguments: [formatbytes(state.outbounds)]) )
                 Text(String(format: "%@ ▼", arguments: [formatbytes(state.inbounds)]) )
             }
             .fixedSize()
             .font(.system(size: 9,weight: .medium))
-            .frame(width: 65,alignment: Alignment.trailing)
+            .frame(width: 60,alignment: Alignment.trailing)
         }
     }
 }
@@ -45,6 +46,7 @@ struct StatusBarMenuView_Previews: PreviewProvider {
     }()
     static var previews: some View {
         StatusBarDetailsView(iostates: data )
+            .frame(width: 200.0)
     }
 }
 
