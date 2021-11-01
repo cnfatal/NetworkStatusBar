@@ -51,6 +51,10 @@
 		BE3EC92F272FA7B8005AC578 /* NetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		BE3EC930272FA7B8005AC578 /* StatusBarDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarDetailsView.swift; sourceTree = "<group>"; };
 		BE3EC938272FA846005AC578 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BE3EC93C272FC5E1005AC578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BE3EC93E272FC761005AC578 /* statusbar-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusbar-snapshot.png"; sourceTree = "<group>"; };
+		BE3EC93F272FC7A1005AC578 /* details-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details-snapshot.png"; sourceTree = "<group>"; };
+		BE3EC940272FC8CD005AC578 /* all-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all-snapshot.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 		BE3EC8F6272FA6E6005AC578 = {
 			isa = PBXGroup;
 			children = (
+				BE3EC93D272FC706005AC578 /* docs */,
+				BE3EC93C272FC5E1005AC578 /* README.md */,
 				BE3EC901272FA6E6005AC578 /* NetworkStatusBar */,
 				BE3EC913272FA6E7005AC578 /* NetworkStatusBarTests */,
 				BE3EC91D272FA6E7005AC578 /* NetworkStatusBarUITests */,
@@ -136,6 +142,16 @@
 				BE3EC920272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift */,
 			);
 			path = NetworkStatusBarUITests;
+			sourceTree = "<group>";
+		};
+		BE3EC93D272FC706005AC578 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				BE3EC940272FC8CD005AC578 /* all-snapshot.png */,
+				BE3EC93E272FC761005AC578 /* statusbar-snapshot.png */,
+				BE3EC93F272FC7A1005AC578 /* details-snapshot.png */,
+			);
+			path = docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
