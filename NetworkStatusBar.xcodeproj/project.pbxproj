@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE3EC903272FA6E6005AC578 /* NetworkStatusBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */; };
+		BE3EC905272FA6E6005AC578 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC904272FA6E6005AC578 /* ContentView.swift */; };
+		BE3EC907272FA6E7005AC578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC906272FA6E7005AC578 /* Assets.xcassets */; };
+		BE3EC90A272FA6E7005AC578 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC909272FA6E7005AC578 /* Preview Assets.xcassets */; };
+		BE3EC915272FA6E7005AC578 /* NetworkStatusBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC914272FA6E7005AC578 /* NetworkStatusBarTests.swift */; };
+		BE3EC91F272FA6E7005AC578 /* NetworkStatusBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC91E272FA6E7005AC578 /* NetworkStatusBarUITests.swift */; };
+		BE3EC921272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC920272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift */; };
+		BE3EC92E272FA7A2005AC578 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC92D272FA7A2005AC578 /* StatusBarView.swift */; };
+		BE3EC932272FA7B8005AC578 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC92F272FA7B8005AC578 /* NetworkStatus.swift */; };
+		BE3EC933272FA7B8005AC578 /* StatusBarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC930272FA7B8005AC578 /* StatusBarDetailsView.swift */; };
+		BE3EC935272FA827005AC578 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC937272FA827005AC578 /* Localizable.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE3EC911272FA6E7005AC578 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE3EC8F7272FA6E6005AC578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE3EC8FE272FA6E6005AC578;
+			remoteInfo = NetworkStatusBar;
+		};
+		BE3EC91B272FA6E7005AC578 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE3EC8F7272FA6E6005AC578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE3EC8FE272FA6E6005AC578;
+			remoteInfo = NetworkStatusBar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BE3EC8FF272FA6E6005AC578 /* NetworkStatusBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkStatusBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarApp.swift; sourceTree = "<group>"; };
+		BE3EC904272FA6E6005AC578 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BE3EC906272FA6E7005AC578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE3EC909272FA6E7005AC578 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BE3EC90B272FA6E7005AC578 /* NetworkStatusBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetworkStatusBar.entitlements; sourceTree = "<group>"; };
+		BE3EC910272FA6E7005AC578 /* NetworkStatusBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkStatusBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE3EC914272FA6E7005AC578 /* NetworkStatusBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarTests.swift; sourceTree = "<group>"; };
+		BE3EC91A272FA6E7005AC578 /* NetworkStatusBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkStatusBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE3EC91E272FA6E7005AC578 /* NetworkStatusBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarUITests.swift; sourceTree = "<group>"; };
+		BE3EC920272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BE3EC92D272FA7A2005AC578 /* StatusBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
+		BE3EC92F272FA7B8005AC578 /* NetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
+		BE3EC930272FA7B8005AC578 /* StatusBarDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarDetailsView.swift; sourceTree = "<group>"; };
+		BE3EC938272FA846005AC578 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE3EC8FC272FA6E6005AC578 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE3EC90D272FA6E7005AC578 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE3EC917272FA6E7005AC578 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE3EC8F6272FA6E6005AC578 = {
+			isa = PBXGroup;
+			children = (
+				BE3EC901272FA6E6005AC578 /* NetworkStatusBar */,
+				BE3EC913272FA6E7005AC578 /* NetworkStatusBarTests */,
+				BE3EC91D272FA6E7005AC578 /* NetworkStatusBarUITests */,
+				BE3EC900272FA6E6005AC578 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE3EC900272FA6E6005AC578 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE3EC8FF272FA6E6005AC578 /* NetworkStatusBar.app */,
+				BE3EC910272FA6E7005AC578 /* NetworkStatusBarTests.xctest */,
+				BE3EC91A272FA6E7005AC578 /* NetworkStatusBarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE3EC901272FA6E6005AC578 /* NetworkStatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */,
+				BE3EC92D272FA7A2005AC578 /* StatusBarView.swift */,
+				BE3EC937272FA827005AC578 /* Localizable.strings */,
+				BE3EC92F272FA7B8005AC578 /* NetworkStatus.swift */,
+				BE3EC930272FA7B8005AC578 /* StatusBarDetailsView.swift */,
+				BE3EC904272FA6E6005AC578 /* ContentView.swift */,
+				BE3EC906272FA6E7005AC578 /* Assets.xcassets */,
+				BE3EC90B272FA6E7005AC578 /* NetworkStatusBar.entitlements */,
+				BE3EC908272FA6E7005AC578 /* Preview Content */,
+			);
+			path = NetworkStatusBar;
+			sourceTree = "<group>";
+		};
+		BE3EC908272FA6E7005AC578 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BE3EC909272FA6E7005AC578 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BE3EC913272FA6E7005AC578 /* NetworkStatusBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE3EC914272FA6E7005AC578 /* NetworkStatusBarTests.swift */,
+			);
+			path = NetworkStatusBarTests;
+			sourceTree = "<group>";
+		};
+		BE3EC91D272FA6E7005AC578 /* NetworkStatusBarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BE3EC91E272FA6E7005AC578 /* NetworkStatusBarUITests.swift */,
+				BE3EC920272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift */,
+			);
+			path = NetworkStatusBarUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE3EC8FE272FA6E6005AC578 /* NetworkStatusBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE3EC924272FA6E7005AC578 /* Build configuration list for PBXNativeTarget "NetworkStatusBar" */;
+			buildPhases = (
+				BE3EC8FB272FA6E6005AC578 /* Sources */,
+				BE3EC8FC272FA6E6005AC578 /* Frameworks */,
+				BE3EC8FD272FA6E6005AC578 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NetworkStatusBar;
+			productName = NetworkStatusBar;
+			productReference = BE3EC8FF272FA6E6005AC578 /* NetworkStatusBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BE3EC90F272FA6E7005AC578 /* NetworkStatusBarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE3EC927272FA6E7005AC578 /* Build configuration list for PBXNativeTarget "NetworkStatusBarTests" */;
+			buildPhases = (
+				BE3EC90C272FA6E7005AC578 /* Sources */,
+				BE3EC90D272FA6E7005AC578 /* Frameworks */,
+				BE3EC90E272FA6E7005AC578 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE3EC912272FA6E7005AC578 /* PBXTargetDependency */,
+			);
+			name = NetworkStatusBarTests;
+			productName = NetworkStatusBarTests;
+			productReference = BE3EC910272FA6E7005AC578 /* NetworkStatusBarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BE3EC919272FA6E7005AC578 /* NetworkStatusBarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE3EC92A272FA6E7005AC578 /* Build configuration list for PBXNativeTarget "NetworkStatusBarUITests" */;
+			buildPhases = (
+				BE3EC916272FA6E7005AC578 /* Sources */,
+				BE3EC917272FA6E7005AC578 /* Frameworks */,
+				BE3EC918272FA6E7005AC578 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE3EC91C272FA6E7005AC578 /* PBXTargetDependency */,
+			);
+			name = NetworkStatusBarUITests;
+			productName = NetworkStatusBarUITests;
+			productReference = BE3EC91A272FA6E7005AC578 /* NetworkStatusBarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE3EC8F7272FA6E6005AC578 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					BE3EC8FE272FA6E6005AC578 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					BE3EC90F272FA6E7005AC578 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = BE3EC8FE272FA6E6005AC578;
+					};
+					BE3EC919272FA6E7005AC578 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = BE3EC8FE272FA6E6005AC578;
+					};
+				};
+			};
+			buildConfigurationList = BE3EC8FA272FA6E6005AC578 /* Build configuration list for PBXProject "NetworkStatusBar" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = BE3EC8F6272FA6E6005AC578;
+			productRefGroup = BE3EC900272FA6E6005AC578 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE3EC8FE272FA6E6005AC578 /* NetworkStatusBar */,
+				BE3EC90F272FA6E7005AC578 /* NetworkStatusBarTests */,
+				BE3EC919272FA6E7005AC578 /* NetworkStatusBarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE3EC8FD272FA6E6005AC578 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE3EC90A272FA6E7005AC578 /* Preview Assets.xcassets in Resources */,
+				BE3EC935272FA827005AC578 /* Localizable.strings in Resources */,
+				BE3EC907272FA6E7005AC578 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE3EC90E272FA6E7005AC578 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE3EC918272FA6E7005AC578 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE3EC8FB272FA6E6005AC578 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE3EC932272FA7B8005AC578 /* NetworkStatus.swift in Sources */,
+				BE3EC92E272FA7A2005AC578 /* StatusBarView.swift in Sources */,
+				BE3EC905272FA6E6005AC578 /* ContentView.swift in Sources */,
+				BE3EC903272FA6E6005AC578 /* NetworkStatusBarApp.swift in Sources */,
+				BE3EC933272FA7B8005AC578 /* StatusBarDetailsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE3EC90C272FA6E7005AC578 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE3EC915272FA6E7005AC578 /* NetworkStatusBarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE3EC916272FA6E7005AC578 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE3EC91F272FA6E7005AC578 /* NetworkStatusBarUITests.swift in Sources */,
+				BE3EC921272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE3EC912272FA6E7005AC578 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE3EC8FE272FA6E6005AC578 /* NetworkStatusBar */;
+			targetProxy = BE3EC911272FA6E7005AC578 /* PBXContainerItemProxy */;
+		};
+		BE3EC91C272FA6E7005AC578 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE3EC8FE272FA6E6005AC578 /* NetworkStatusBar */;
+			targetProxy = BE3EC91B272FA6E7005AC578 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE3EC937272FA827005AC578 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE3EC938272FA846005AC578 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE3EC922272FA6E7005AC578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BE3EC923272FA6E7005AC578 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		BE3EC925272FA6E7005AC578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NetworkStatusBar/NetworkStatusBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NetworkStatusBar/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.fatalc.NetworkStatusBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BE3EC926272FA6E7005AC578 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NetworkStatusBar/NetworkStatusBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NetworkStatusBar/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.fatalc.NetworkStatusBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BE3EC928272FA6E7005AC578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.fatalc.NetworkStatusBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkStatusBar.app/Contents/MacOS/NetworkStatusBar";
+			};
+			name = Debug;
+		};
+		BE3EC929272FA6E7005AC578 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.fatalc.NetworkStatusBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkStatusBar.app/Contents/MacOS/NetworkStatusBar";
+			};
+			name = Release;
+		};
+		BE3EC92B272FA6E7005AC578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.fatalc.NetworkStatusBarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = NetworkStatusBar;
+			};
+			name = Debug;
+		};
+		BE3EC92C272FA6E7005AC578 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.fatalc.NetworkStatusBarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = NetworkStatusBar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE3EC8FA272FA6E6005AC578 /* Build configuration list for PBXProject "NetworkStatusBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE3EC922272FA6E7005AC578 /* Debug */,
+				BE3EC923272FA6E7005AC578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE3EC924272FA6E7005AC578 /* Build configuration list for PBXNativeTarget "NetworkStatusBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE3EC925272FA6E7005AC578 /* Debug */,
+				BE3EC926272FA6E7005AC578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE3EC927272FA6E7005AC578 /* Build configuration list for PBXNativeTarget "NetworkStatusBarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE3EC928272FA6E7005AC578 /* Debug */,
+				BE3EC929272FA6E7005AC578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE3EC92A272FA6E7005AC578 /* Build configuration list for PBXNativeTarget "NetworkStatusBarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE3EC92B272FA6E7005AC578 /* Debug */,
+				BE3EC92C272FA6E7005AC578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE3EC8F7272FA6E6005AC578 /* Project object */;
+}
