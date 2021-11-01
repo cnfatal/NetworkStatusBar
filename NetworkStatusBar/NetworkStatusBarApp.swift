@@ -27,7 +27,9 @@ class AppDelegate :NSObject, NSApplicationDelegate{
     func onUpdate(update:NetworkStates){
         DispatchQueue.main.async {
             self.iostates.total = update.Total
-            self.iostates.items = update.Items
+            self.iostates.items = update.Items.filter({ item in
+                return item.total > 1024
+            })
         }
     }
 
@@ -59,7 +61,7 @@ class AppDelegate :NSObject, NSApplicationDelegate{
                     // ListTableCellView has 16dp at left and right,ListScroll has a 15dp width
                     // 16 * 2 + 15 = 47
                     // Out DetailsItem has min length 200
-                    menuitem.view?.setFrameSize(NSSize(width: 247, height: 300))
+                    menuitem.view?.setFrameSize(NSSize(width: 247, height: 100))
                     return menuitem
                 }(),
                 NSMenuItem(
