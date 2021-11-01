@@ -55,6 +55,7 @@
 		BE3EC93E272FC761005AC578 /* statusbar-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusbar-snapshot.png"; sourceTree = "<group>"; };
 		BE3EC93F272FC7A1005AC578 /* details-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details-snapshot.png"; sourceTree = "<group>"; };
 		BE3EC940272FC8CD005AC578 /* all-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all-snapshot.png"; sourceTree = "<group>"; };
+		BE3EC940272FC8CD005AC578 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +86,7 @@
 		BE3EC8F6272FA6E6005AC578 = {
 			isa = PBXGroup;
 			children = (
+				BE3EC940272FC8CD005AC578 /* LICENSE */,
 				BE3EC93D272FC706005AC578 /* docs */,
 				BE3EC93C272FC5E1005AC578 /* README.md */,
 				BE3EC901272FA6E6005AC578 /* NetworkStatusBar */,
