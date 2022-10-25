@@ -69,7 +69,11 @@ open class NetworkDetails {
       return
     }
     var dataframe = (try? DataFrame(csvData: data, columns: Columns)) ?? DataFrame.init()
-    dataframe.renameColumn("", to: ColumnName)
+    if #available(macOS 13.0, *) {
+      dataframe.renameColumn("Column 0", to: ColumnName)
+    } else {
+      dataframe.renameColumn("", to: ColumnName)
+    }
     if laststate.isEmpty {
       laststate = dataframe
     }
