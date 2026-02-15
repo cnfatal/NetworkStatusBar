@@ -41,22 +41,22 @@ struct StatusBarDetailsView: View {
         .padding(.horizontal, 8)
 
       // Process list
-      if iostates.items.isEmpty {
-        Text(NSLocalizedString("no_activity", comment: "No network activity"))
-          .foregroundColor(.secondary)
-          .font(.system(size: 11))
-          .frame(maxWidth: .infinity, alignment: .center)
-          .padding(.vertical, 20)
-      } else {
-        ScrollView {
-          VStack(spacing: 0) {
+      ScrollView {
+        VStack(spacing: 0) {
+          if iostates.items.isEmpty {
+            Text(NSLocalizedString("no_activity", comment: "No network activity"))
+              .foregroundColor(.secondary)
+              .font(.system(size: 11))
+              .frame(maxWidth: .infinity, alignment: .center)
+              .padding(.vertical, 20)
+          } else {
             ForEach(iostates.items) { item in
               StatusBarDetailsItemView(state: item)
             }
           }
         }
-        .frame(maxHeight: 260)
       }
+      .frame(minHeight: 120, maxHeight: 260)
     }
     .frame(width: 280)
   }

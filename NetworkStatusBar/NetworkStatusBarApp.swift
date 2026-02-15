@@ -32,9 +32,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     DispatchQueue.main.async {
       self.iostates.total = update.total
       let threshold = self.settings.minTrafficThreshold
-      let blacklist = self.settings.blacklist
+      // Track all seen process names
+      for item in update.items where !item.name.isEmpty {
+        self.iostates.seenProcessNames.insert(item.name)
+      }
       self.iostates.items = update.items.filter { item in
-        return item.total >= threshold && !blacklist.contains(item.name)
+        return item.total >= threshold && !self.settings.isBlacklisted(item.name)
       }
     }
   }
@@ -53,6 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     settings.$refreshInterval
       .dropFirst()
       .removeDuplicates()
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
         self?.restartNetworkMonitoring()
       }
@@ -91,16 +95,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     menu.items = [
       detailsItem,
       NSMenuItem.separator(),
-      NSMenuItem(
-        title: NSLocalizedString("settings", comment: "Settings"),
-        action: #selector(openSettings),
-        keyEquivalent: ","
-      ),
-      NSMenuItem(
-        title: NSLocalizedString("quit", comment: "quit the application"),
-        action: #selector(quit),
-        keyEquivalent: "q"
-      ),
+      {
+        let item = NSMenuItem(
+          title: NSLocalizedString("settings", comment: "Settings"),
+          action: #selector(openSettings),
+          keyEquivalent: ","
+        )
+        item.image = NSImage(systemSymbolName: "gearshape", accessibilityDescription: "Settings")
+        return item
+      }(),
+      {
+        let item = NSMenuItem(
+          title: NSLocalizedString("quit", comment: "quit the application"),
+          action: #selector(quit),
+          keyEquivalent: "q"
+        )
+        item.image = NSImage(systemSymbolName: "power", accessibilityDescription: "Quit")
+        return item
+      }(),
     ]
 
     statusItem?.menu = menu
@@ -113,7 +125,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       return
     }
 
-    let settingsView = SettingsView()
+    let settingsView = SettingsView(seenProcessNames: iostates.seenProcessNames)
     let hostingController = NSHostingController(rootView: settingsView)
 
     let window = NSWindow(contentViewController: hostingController)

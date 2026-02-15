@@ -1,6 +1,6 @@
 # Network Status Bar
 
-A macOS menu bar tool for monitoring network traffic, written in **SwiftUI**.
+A macOS menu bar tool for monitoring real-time network traffic per process, written in **SwiftUI**.
 
 ## Preview
 
@@ -13,7 +13,7 @@ A macOS menu bar tool for monitoring network traffic, written in **SwiftUI**.
 └──────────────────────────────────────┘
 ```
 
-### Dropdown Details
+### Dropdown Menu
 
 ```
 ┌────────────────────────────────┐
@@ -27,24 +27,35 @@ A macOS menu bar tool for monitoring network traffic, written in **SwiftUI**.
 │  Terminal         ↑  1.2KB/s  │
 │                   ↓  0.2KB/s  │
 ├────────────────────────────────┤
-│  ⚙ Settings                   │
+│  ⚙ Settings             ⌘,   │
+│  ⏻ Quit                 ⌘Q   │
+└────────────────────────────────┘
+```
+
+### Settings Window
+
+```
+┌─ Settings ─────────────────────┐
 │                                │
-│  Refresh Interval              │
-│  [1s] [2s] [3s] [5s] [10s]    │
+│  🕐 Refresh Interval           │
+│  ┌────────────────────────┐   │
+│  │ 1s  2s  3s  5s  10s   │   │
+│  └────────────────────────┘   │
 │                                │
-│  Min Traffic Threshold         │
-│  [All] [1KB] [10KB] [100KB]   │
+│  🏎 Min Traffic Threshold      │
+│  ┌────────────────────────┐   │
+│  │ All  1KB  10KB  100KB  │   │
+│  └────────────────────────┘   │
 │                                │
-│  App Blacklist                 │
-│  ┌──────────────────┐ [+]     │
-│  │ Enter app name...│         │
-│  └──────────────────┘         │
+│  🚫 Process Blacklist          │
+│  ┌────────────────────────┐   │
+│  │ Select process    [▾]  │   │
+│  └────────────────────────┘   │
 │  ┌─────────────────────┐      │
-│  │ ClashX          [x] │      │
-│  │ Surge           [x] │      │
+│  │ ClashX          (x) │      │
+│  │ Surge           (x) │      │
 │  └─────────────────────┘      │
-├────────────────────────────────┤
-│  Quit                    ⌘Q   │
+│                                │
 └────────────────────────────────┘
 ```
 
@@ -52,9 +63,10 @@ A macOS menu bar tool for monitoring network traffic, written in **SwiftUI**.
 
 - [x] SwiftUI based macOS menu bar app
 - [x] Real-time network upload/download speed on status bar
-- [x] Per-application network traffic in dropdown menu
+- [x] Per-process network traffic breakdown in dropdown menu
 - [x] Configurable refresh interval (1s / 2s / 3s / 5s / 10s)
 - [x] Configurable minimum traffic threshold filter
-- [x] App blacklist to exclude specific applications (e.g. proxies)
+- [x] Process blacklist — select from detected processes to exclude (e.g. proxies)
+- [x] Standalone settings window (⌘,)
 - [x] Settings persist via UserDefaults
 - [x] Localization support (English / 中文)

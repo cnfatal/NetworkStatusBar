@@ -10,6 +10,7 @@ import SwiftUI
 class IOStates: ObservableObject {
   @Published var total: NetworkState = NetworkState()
   @Published var items: [NetworkState] = []
+  @Published var seenProcessNames: Set<String> = []
 }
 
 struct StatusBarView: View {

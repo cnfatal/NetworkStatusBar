@@ -9,15 +9,22 @@ import SwiftUI
 
 struct SettingsView: View {
   @ObservedObject var settings = AppSettings.shared
-  @State private var newBlacklistItem: String = ""
+  @State private var selectedProcess: String = ""
+  var seenProcessNames: Set<String> = []
+
+  private var availableProcesses: [String] {
+    let existing = Set(settings.blacklist)
+    return seenProcessNames.subtracting(existing).sorted()
+  }
 
   var body: some View {
-    Form {
-      Section {
-        Picker(
-          NSLocalizedString("refresh_interval", comment: "Refresh Interval"),
-          selection: $settings.refreshInterval
-        ) {
+    VStack(alignment: .leading, spacing: 16) {
+      // Section 1: Refresh interval
+      GroupBox(label: Label(
+        NSLocalizedString("refresh_interval", comment: ""),
+        systemImage: "clock"
+      )) {
+        Picker("", selection: $settings.refreshInterval) {
           Text("1s").tag(1)
           Text("2s").tag(2)
           Text("3s").tag(3)
@@ -25,83 +32,85 @@ struct SettingsView: View {
           Text("10s").tag(10)
         }
         .pickerStyle(.segmented)
-      } header: {
-        Text(NSLocalizedString("refresh_interval", comment: "Refresh Interval"))
+        .labelsHidden()
+        .padding(.top, 4)
       }
 
-      Section {
-        Picker(
-          NSLocalizedString("min_threshold", comment: "Minimum Traffic Threshold"),
-          selection: $settings.minTrafficThreshold
-        ) {
-          Text(NSLocalizedString("show_all", comment: "Show All")).tag(0)
+      // Section 2: Traffic threshold
+      GroupBox(label: Label(
+        NSLocalizedString("min_threshold", comment: ""),
+        systemImage: "speedometer"
+      )) {
+        Picker("", selection: $settings.minTrafficThreshold) {
+          Text(NSLocalizedString("show_all", comment: "")).tag(0)
           Text("1 KB/s").tag(1024)
           Text("10 KB/s").tag(10240)
           Text("100 KB/s").tag(102400)
         }
         .pickerStyle(.segmented)
-      } header: {
-        Text(NSLocalizedString("min_threshold", comment: "Minimum Traffic Threshold"))
+        .labelsHidden()
+        .padding(.top, 4)
       }
 
-      Section {
-        Text(NSLocalizedString("blacklist_desc", comment: "Blacklist description"))
-          .font(.callout)
-          .foregroundColor(.secondary)
-
-        HStack {
-          TextField(
-            NSLocalizedString("app_name_placeholder", comment: "App name placeholder"),
-            text: $newBlacklistItem
-          )
-          .textFieldStyle(.roundedBorder)
-          .onSubmit { addBlacklistItem() }
-
-          Button(action: addBlacklistItem) {
-            Image(systemName: "plus.circle.fill")
+      // Section 3: Process Blacklist
+      GroupBox(label: Label(
+        NSLocalizedString("blacklist", comment: ""),
+        systemImage: "nosign"
+      )) {
+        VStack(alignment: .leading, spacing: 8) {
+          // Pick from seen processes
+          if !availableProcesses.isEmpty {
+            Picker(NSLocalizedString("select_process", comment: ""), selection: $selectedProcess) {
+              Text("—").tag("")
+              ForEach(availableProcesses, id: \.self) { name in
+                Text(name).tag(name)
+              }
+            }
+            .onChange(of: selectedProcess) { value in
+              guard !value.isEmpty else { return }
+              settings.addToBlacklist(value)
+              selectedProcess = ""
+            }
           }
-          .disabled(newBlacklistItem.trimmingCharacters(in: .whitespaces).isEmpty)
-        }
 
-        if settings.blacklist.isEmpty {
-          Text(NSLocalizedString("blacklist_empty", comment: "No blacklisted apps"))
-            .foregroundColor(.secondary)
-            .italic()
-        } else {
-          List {
-            ForEach(settings.blacklist, id: \.self) { name in
-              HStack {
-                Text(name)
-                Spacer()
-                Button(action: { settings.removeFromBlacklist(name) }) {
-                  Image(systemName: "trash")
-                    .foregroundColor(.red)
+          // Blacklist items
+          if settings.blacklist.isEmpty {
+            Text(NSLocalizedString("blacklist_empty", comment: ""))
+              .foregroundColor(.secondary)
+              .italic()
+              .padding(.vertical, 2)
+          } else {
+            VStack(spacing: 2) {
+              ForEach(settings.blacklist, id: \.self) { name in
+                HStack {
+                  Text(name)
+                    .lineLimit(1)
+                  Spacer()
+                  Button(action: { settings.removeFromBlacklist(name) }) {
+                    Image(systemName: "xmark.circle.fill")
+                      .foregroundColor(.secondary)
+                  }
+                  .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color.primary.opacity(0.04))
+                .cornerRadius(4)
               }
             }
           }
-          .frame(minHeight: 60, maxHeight: 160)
         }
-      } header: {
-        Text(NSLocalizedString("blacklist", comment: "App Blacklist"))
+        .padding(.top, 4)
       }
     }
-    .navigationTitle(NSLocalizedString("settings", comment: "Settings"))
-    .frame(width: 400, height: 420)
+    .padding(20)
+    .frame(width: 360)
     .fixedSize()
-  }
-
-  private func addBlacklistItem() {
-    let trimmed = newBlacklistItem.trimmingCharacters(in: .whitespaces)
-    guard !trimmed.isEmpty else { return }
-    settings.addToBlacklist(trimmed)
-    newBlacklistItem = ""
   }
 }
 
 struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
-    SettingsView()
+    SettingsView(seenProcessNames: ["Chrome", "Slack", "Terminal", "ClashX", "Surge", "Safari"])
   }
 }
