@@ -1,19 +1,60 @@
-#  Network Status Bar
+# Network Status Bar
 
-A macos status bar tool for monitoring network trffic write in **Swift UI 2.0**.
+A macOS menu bar tool for monitoring network traffic, written in **SwiftUI**.
 
-## snapshots
+## Preview
 
-![all](docs/all-snapshot.png)
+### Status Bar
 
-![statusbar](docs/statusbar-snapshot.png)
+```
+┌──────────────────────────────────────┐
+│ ☀️  🔋  ┊ 12.5KB/s ▲ ┊  Wi-Fi  🔍  │
+│         ┊  3.2KB/s ▼ ┊              │
+└──────────────────────────────────────┘
+```
 
-![details](docs/details-snapshot.png) 
+### Dropdown Details
 
-## feature
+```
+┌────────────────────────────────┐
+│  Network Traffic               │
+│  ↑ 12.5KB/s    ↓ 3.2KB/s      │
+├────────────────────────────────┤
+│  Chrome           ↑  8.1KB/s  │
+│                   ↓  2.0KB/s  │
+│  Slack            ↑  3.2KB/s  │
+│                   ↓  1.0KB/s  │
+│  Terminal         ↑  1.2KB/s  │
+│                   ↓  0.2KB/s  │
+├────────────────────────────────┤
+│  ⚙ Settings                   │
+│                                │
+│  Refresh Interval              │
+│  [1s] [2s] [3s] [5s] [10s]    │
+│                                │
+│  Min Traffic Threshold         │
+│  [All] [1KB] [10KB] [100KB]   │
+│                                │
+│  App Blacklist                 │
+│  ┌──────────────────┐ [+]     │
+│  │ Enter app name...│         │
+│  └──────────────────┘         │
+│  ┌─────────────────────┐      │
+│  │ ClashX          [x] │      │
+│  │ Surge           [x] │      │
+│  └─────────────────────┘      │
+├────────────────────────────────┤
+│  Quit                    ⌘Q   │
+└────────────────────────────────┘
+```
 
-- [x] Swift UI 2.0 Base.
-- [x] Show network IO on status bar.
-- [x] Show per application network on dropdown menu.
-- [ ] Support refresh seconds customize.
-- [ ] Support application deny list,such as proxy applications.
+## Features
+
+- [x] SwiftUI based macOS menu bar app
+- [x] Real-time network upload/download speed on status bar
+- [x] Per-application network traffic in dropdown menu
+- [x] Configurable refresh interval (1s / 2s / 3s / 5s / 10s)
+- [x] Configurable minimum traffic threshold filter
+- [x] App blacklist to exclude specific applications (e.g. proxies)
+- [x] Settings persist via UserDefaults
+- [x] Localization support (English / 中文)

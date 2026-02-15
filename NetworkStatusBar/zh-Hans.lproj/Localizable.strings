@@ -8,3 +8,11 @@
 "quit"="退出";
 "network_traffic"="网络流量";
 "no_activity"="暂无网络活动";
+"settings"="设置";
+"refresh_interval"="刷新频率";
+"min_threshold"="最低流量阈值";
+"show_all"="全部";
+"blacklist"="应用黑名单";
+"blacklist_desc"="被排除的应用将不会出现在流量列表中。";
+"app_name_placeholder"="输入应用名称...";
+"blacklist_empty"="暂无黑名单应用";

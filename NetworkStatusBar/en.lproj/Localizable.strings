@@ -8,3 +8,11 @@
 "quit"="Quit";
 "network_traffic"="Network Traffic";
 "no_activity"="No network activity";
+"settings"="Settings";
+"refresh_interval"="Refresh Interval";
+"min_threshold"="Min Traffic Threshold";
+"show_all"="All";
+"blacklist"="App Blacklist";
+"blacklist_desc"="Excluded apps will not appear in the traffic list.";
+"app_name_placeholder"="Enter app name...";
+"blacklist_empty"="No blacklisted apps";

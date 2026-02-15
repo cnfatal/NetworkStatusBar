@@ -5,6 +5,7 @@
 //  Created by fatal cn on 2021/10/31.
 //
 
+import Combine
 import SwiftUI
 
 @main
@@ -23,13 +24,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var statusItem: NSStatusItem?
 
   var networkStatus: NetworkDetails = NetworkDetails()
+  let settings = AppSettings.shared
+  private var cancellables = Set<AnyCancellable>()
 
   func onUpdate(update: NetworkStates) {
     DispatchQueue.main.async {
       self.iostates.total = update.total
-      self.iostates.items = update.items.filter({ item in
-        return item.total > 1024
-      })
+      let threshold = self.settings.minTrafficThreshold
+      let blacklist = self.settings.blacklist
+      self.iostates.items = update.items.filter { item in
+        return item.total >= threshold && !blacklist.contains(item.name)
+      }
     }
   }
 
@@ -41,9 +46,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     statusItem = NSStatusBar.system.statusItem(withLength: 62)
 
     networkStatus.callback = onUpdate
-    DispatchQueue.global(qos: .userInteractive).async {
-      self.networkStatus.run(refreshSeconds: 1)
-    }
+    startNetworkMonitoring()
+
+    // Watch for refresh interval changes
+    settings.$refreshInterval
+      .dropFirst()
+      .removeDuplicates()
+      .sink { [weak self] _ in
+        self?.restartNetworkMonitoring()
+      }
+      .store(in: &cancellables)
 
     if let button = statusItem?.button {
       let statusbarview = NSHostingView(rootView: StatusBarView(iostates: iostates))
@@ -51,26 +63,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       button.addSubview(statusbarview)
     }
 
-    statusItem?.menu = {
-      let menu = NSMenu()
-      menu.items = [
-        {
-          let menuitem = NSMenuItem()
-          let detailsView = StatusBarDetailsView(iostates: iostates)
-          let hostingView = NSHostingView(rootView: detailsView)
-          hostingView.setFrameSize(NSSize(width: 280, height: 320))
-          menuitem.view = hostingView
-          return menuitem
-        }(),
-        NSMenuItem.separator(),
-        NSMenuItem(
-          title: NSLocalizedString("quit", comment: "quit the application"),
-          action: #selector(quit),
-          keyEquivalent: "q"
-        ),
-      ]
-      return menu
-    }()
+    setupMenu()
+  }
+
+  private func startNetworkMonitoring() {
+    DispatchQueue.global(qos: .userInteractive).async {
+      self.networkStatus.run(refreshSeconds: self.settings.refreshInterval)
+    }
+  }
+
+  private func restartNetworkMonitoring() {
+    networkStatus.stop()
+    startNetworkMonitoring()
+  }
+
+  private func setupMenu() {
+    let menu = NSMenu()
+    menu.delegate = self
+
+    let detailsItem = NSMenuItem()
+    let detailsView = StatusBarDetailsView(iostates: iostates)
+    let hostingView = NSHostingView(rootView: detailsView)
+    hostingView.setFrameSize(NSSize(width: 280, height: 320))
+    detailsItem.view = hostingView
+
+    let settingsItem = NSMenuItem()
+    let settingsHostingView = NSHostingView(rootView: SettingsView())
+    settingsHostingView.setFrameSize(NSSize(width: 280, height: 10))
+    settingsItem.view = settingsHostingView
+
+    menu.items = [
+      detailsItem,
+      NSMenuItem.separator(),
+      settingsItem,
+      NSMenuItem.separator(),
+      NSMenuItem(
+        title: NSLocalizedString("quit", comment: "quit the application"),
+        action: #selector(quit),
+        keyEquivalent: "q"
+      ),
+    ]
+
+    statusItem?.menu = menu
   }
 
   func applicationWillTerminate(_ notification: Notification) {
@@ -79,5 +113,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   @IBAction func quit(obj: Any) {
     NSApp.terminate(nil)
+  }
+}
+
+extension AppDelegate: NSMenuDelegate {
+  func menuWillOpen(_ menu: NSMenu) {
+    // Resize details view based on content
+    if let detailsView = menu.items.first?.view as? NSHostingView<StatusBarDetailsView> {
+      let fittingSize = detailsView.fittingSize
+      detailsView.setFrameSize(NSSize(width: 280, height: max(fittingSize.height, 80)))
+    }
+    // Resize settings view
+    if menu.items.count > 2,
+      let settingsView = menu.items[2].view as? NSHostingView<SettingsView>
+    {
+      let fittingSize = settingsView.fittingSize
+      settingsView.setFrameSize(NSSize(width: 280, height: fittingSize.height))
+    }
   }
 }

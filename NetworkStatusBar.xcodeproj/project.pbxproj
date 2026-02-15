@@ -17,6 +17,8 @@
 		BE3EC932272FA7B8005AC578 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC92F272FA7B8005AC578 /* NetworkStatus.swift */; };
 		BE3EC933272FA7B8005AC578 /* StatusBarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC930272FA7B8005AC578 /* StatusBarDetailsView.swift */; };
 		BE3EC935272FA827005AC578 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC937272FA827005AC578 /* Localizable.strings */; };
+		AA0001012026021600000001 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0001002026021600000001 /* AppSettings.swift */; };
+		AA0001032026021600000002 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0001022026021600000002 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		BE3EC93E272FC761005AC578 /* statusbar-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusbar-snapshot.png"; sourceTree = "<group>"; };
 		BE3EC93F272FC7A1005AC578 /* details-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details-snapshot.png"; sourceTree = "<group>"; };
 		BE3EC940272FC8CD005AC578 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		AA0001002026021600000001 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		AA0001022026021600000002 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +113,12 @@
 			isa = PBXGroup;
 			children = (
 				BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */,
+				AA0001002026021600000001 /* AppSettings.swift */,
 				BE3EC92D272FA7A2005AC578 /* StatusBarView.swift */,
 				BE3EC937272FA827005AC578 /* Localizable.strings */,
 				BE3EC92F272FA7B8005AC578 /* NetworkStatus.swift */,
 				BE3EC930272FA7B8005AC578 /* StatusBarDetailsView.swift */,
+				AA0001022026021600000002 /* SettingsView.swift */,
 				BE3EC906272FA6E7005AC578 /* Assets.xcassets */,
 				BE3EC90B272FA6E7005AC578 /* NetworkStatusBar.entitlements */,
 				BE3EC908272FA6E7005AC578 /* Preview Content */,
@@ -290,6 +296,8 @@
 				BE3EC92E272FA7A2005AC578 /* StatusBarView.swift in Sources */,
 				BE3EC903272FA6E6005AC578 /* NetworkStatusBarApp.swift in Sources */,
 				BE3EC933272FA7B8005AC578 /* StatusBarDetailsView.swift in Sources */,
+				AA0001012026021600000001 /* AppSettings.swift in Sources */,
+				AA0001032026021600000002 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

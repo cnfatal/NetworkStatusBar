@@ -27,6 +27,7 @@ open class NetworkDetails {
 
   var laststate: DataFrame = DataFrame()
   var process: Process = Process()
+  private let lock = NSLock()
 
   init() {
     self.prepare()
@@ -75,6 +76,9 @@ open class NetworkDetails {
     if data.isEmpty {
       return
     }
+    lock.lock()
+    defer { lock.unlock() }
+
     var dataframe = (try? DataFrame(csvData: data, columns: Columns)) ?? DataFrame.init()
     if #available(macOS 13.0, *) {
       dataframe.renameColumn("Column 0", to: ColumnName)
