@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var networkStatus: NetworkDetails = NetworkDetails()
   let settings = AppSettings.shared
   private var cancellables = Set<AnyCancellable>()
+  private var settingsWindow: NSWindow?
 
   func onUpdate(update: NetworkStates) {
     DispatchQueue.main.async {
@@ -87,16 +88,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     hostingView.setFrameSize(NSSize(width: 280, height: 320))
     detailsItem.view = hostingView
 
-    let settingsItem = NSMenuItem()
-    let settingsHostingView = NSHostingView(rootView: SettingsView())
-    settingsHostingView.setFrameSize(NSSize(width: 280, height: 10))
-    settingsItem.view = settingsHostingView
-
     menu.items = [
       detailsItem,
       NSMenuItem.separator(),
-      settingsItem,
-      NSMenuItem.separator(),
+      NSMenuItem(
+        title: NSLocalizedString("settings", comment: "Settings"),
+        action: #selector(openSettings),
+        keyEquivalent: ","
+      ),
       NSMenuItem(
         title: NSLocalizedString("quit", comment: "quit the application"),
         action: #selector(quit),
@@ -105,6 +104,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ]
 
     statusItem?.menu = menu
+  }
+
+  @objc func openSettings() {
+    if let window = settingsWindow {
+      window.makeKeyAndOrderFront(nil)
+      NSApp.activate(ignoringOtherApps: true)
+      return
+    }
+
+    let settingsView = SettingsView()
+    let hostingController = NSHostingController(rootView: settingsView)
+
+    let window = NSWindow(contentViewController: hostingController)
+    window.title = NSLocalizedString("settings", comment: "Settings")
+    window.styleMask = [.titled, .closable]
+    window.center()
+    window.isReleasedWhenClosed = false
+    window.delegate = self
+    window.makeKeyAndOrderFront(nil)
+
+    NSApp.activate(ignoringOtherApps: true)
+    settingsWindow = window
   }
 
   func applicationWillTerminate(_ notification: Notification) {
@@ -116,19 +137,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 }
 
+extension AppDelegate: NSWindowDelegate {
+  func windowWillClose(_ notification: Notification) {
+    if let window = notification.object as? NSWindow, window == settingsWindow {
+      settingsWindow = nil
+    }
+  }
+}
+
 extension AppDelegate: NSMenuDelegate {
   func menuWillOpen(_ menu: NSMenu) {
     // Resize details view based on content
     if let detailsView = menu.items.first?.view as? NSHostingView<StatusBarDetailsView> {
       let fittingSize = detailsView.fittingSize
       detailsView.setFrameSize(NSSize(width: 280, height: max(fittingSize.height, 80)))
-    }
-    // Resize settings view
-    if menu.items.count > 2,
-      let settingsView = menu.items[2].view as? NSHostingView<SettingsView>
-    {
-      let fittingSize = settingsView.fittingSize
-      settingsView.setFrameSize(NSSize(width: 280, height: fittingSize.height))
     }
   }
 }
