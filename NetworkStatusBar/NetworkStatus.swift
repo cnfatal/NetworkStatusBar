@@ -26,12 +26,8 @@ open class NetworkDetails {
   var callback: (NetworkStates) -> Void = { _ in }
 
   var laststate: DataFrame = DataFrame()
-  var process: Process = Process()
+  var process: Process?
   private let lock = NSLock()
-
-  init() {
-    self.prepare()
-  }
 
   let ColumnName = "name"
   let ColumnBytesIn = "bytes_in"
@@ -39,37 +35,40 @@ open class NetworkDetails {
   let ColumnBytesTotal = "bytes_total"
   let Columns = ["", "bytes_in", "bytes_out"]
 
-  func prepare() {
-    process.executableURL = URL.init(fileURLWithPath: "/usr/bin/nettop")
+  func run(refreshSeconds: Int = 1) {
+    stop()
+
+    let proc = Process()
+    proc.executableURL = URL(fileURLWithPath: "/usr/bin/nettop")
+    proc.arguments = ["-P", "-L", "0", "-s", "\(refreshSeconds)"]
+
     let pipe = Pipe()
-    process.standardOutput = pipe
-    process.standardError = pipe
-    process.standardInput = Pipe()
-    Task {
+    proc.standardOutput = pipe
+    proc.standardError = pipe
+    proc.standardInput = Pipe()
+
+    Task { [weak self] in
       var data = Data()
       for try await line in pipe.fileHandleForReading.bytes.lines {
         if line.hasPrefix("time") {
-          self.update(data: data)
+          self?.update(data: data)
           data = Data()
         }
         data.append(contentsOf: (line + "\n").utf8)
       }
     }
-  }
 
-  func run(refreshSeconds: Int = 1) {
-    if process.isRunning {
-      process.terminate()
-    }
-    process.arguments = ["-P", "-L", "0", "-s", "\(refreshSeconds)"]
-    try? process.run()
-    process.waitUntilExit()
+    self.process = proc
+    try? proc.run()
+    proc.waitUntilExit()
   }
 
   func stop() {
-    if process.isRunning {
-      process.terminate()
+    if let proc = process, proc.isRunning {
+      proc.terminate()
+      proc.waitUntilExit()
     }
+    process = nil
   }
 
   func update(data: Data) {
