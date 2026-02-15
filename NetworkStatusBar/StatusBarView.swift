@@ -15,11 +15,11 @@ class IOStates: ObservableObject {
 struct StatusBarView: View {
   @ObservedObject var iostates = IOStates()
   var body: some View {
-    VStack(alignment: .trailing) {
+    VStack(alignment: .trailing, spacing: 2) {
       Text(String(format: "%@ ▲", arguments: [formatbytes(iostates.total.outbounds)]))
       Text(String(format: "%@ ▼", arguments: [formatbytes(iostates.total.inbounds)]))
     }
-    .font(.system(size: 9, weight: .medium))
+    .font(.system(size: 9, weight: .medium, design: .monospaced))
   }
 }
 

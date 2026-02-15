@@ -9,11 +9,12 @@ import Foundation
 import TabularData
 
 struct NetworkStates {
-  var Total: NetworkState = NetworkState()
-  var Items: [NetworkState] = []
+  var total: NetworkState = NetworkState()
+  var items: [NetworkState] = []
 }
 
-struct NetworkState {
+struct NetworkState: Identifiable {
+  var id: String { "\(pid).\(name)" }
   var pid: Int = 0
   var name: String = ""
   var inbounds: Int = 0
@@ -62,6 +63,12 @@ open class NetworkDetails {
     process.arguments = ["-P", "-L", "0", "-s", "\(refreshSeconds)"]
     try? process.run()
     process.waitUntilExit()
+  }
+
+  func stop() {
+    if process.isRunning {
+      process.terminate()
+    }
   }
 
   func update(data: Data) {
@@ -113,8 +120,8 @@ open class NetworkDetails {
 
     items.sort { $0.total > $1.total }
     let ret = NetworkStates(
-      Total: NetworkState(inbounds: totalin, outbounds: totalout),
-      Items: items)
+      total: NetworkState(inbounds: totalin, outbounds: totalout),
+      items: items)
 
     self.callback(ret)
   }

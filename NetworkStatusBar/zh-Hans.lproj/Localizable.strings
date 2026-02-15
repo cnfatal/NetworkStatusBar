@@ -6,3 +6,5 @@
   
 */
 "quit"="退出";
+"network_traffic"="网络流量";
+"no_activity"="暂无网络活动";

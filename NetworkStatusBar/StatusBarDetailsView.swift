@@ -6,15 +6,59 @@
 //
 
 import SwiftUI
-import TabularData
 
 struct StatusBarDetailsView: View {
   @ObservedObject var iostates = IOStates()
   var body: some View {
-    List(iostates.items, id: \.pid) { item in
-      StatusBarDetailsItemView(state: item)
+    VStack(alignment: .leading, spacing: 0) {
+      // Header: Total traffic summary
+      VStack(alignment: .leading, spacing: 6) {
+        Text(NSLocalizedString("network_traffic", comment: "Network Traffic"))
+          .font(.system(size: 13, weight: .semibold))
+        HStack(spacing: 16) {
+          Label {
+            Text(formatbytes(iostates.total.outbounds))
+              .font(.system(size: 11, weight: .medium, design: .monospaced))
+          } icon: {
+            Image(systemName: "arrow.up")
+              .font(.system(size: 9, weight: .semibold))
+              .foregroundColor(.orange)
+          }
+          Label {
+            Text(formatbytes(iostates.total.inbounds))
+              .font(.system(size: 11, weight: .medium, design: .monospaced))
+          } icon: {
+            Image(systemName: "arrow.down")
+              .font(.system(size: 9, weight: .semibold))
+              .foregroundColor(.cyan)
+          }
+        }
+      }
+      .padding(.horizontal, 12)
+      .padding(.vertical, 10)
+
+      Divider()
+        .padding(.horizontal, 8)
+
+      // Process list
+      if iostates.items.isEmpty {
+        Text(NSLocalizedString("no_activity", comment: "No network activity"))
+          .foregroundColor(.secondary)
+          .font(.system(size: 11))
+          .frame(maxWidth: .infinity, alignment: .center)
+          .padding(.vertical, 20)
+      } else {
+        ScrollView {
+          VStack(spacing: 0) {
+            ForEach(iostates.items) { item in
+              StatusBarDetailsItemView(state: item)
+            }
+          }
+        }
+        .frame(maxHeight: 260)
+      }
     }
-    .listStyle(.sidebar)
+    .frame(width: 280)
   }
 }
 
@@ -22,37 +66,56 @@ struct StatusBarDetailsItemView: View {
   var state: NetworkState = NetworkState()
 
   var body: some View {
-    HStack(alignment: VerticalAlignment.center, spacing: 0) {
+    HStack {
       Text(state.name)
-        .frame(width: 140, alignment: Alignment.leading)
-      VStack(alignment: .trailing) {
-        Text(String(format: "%@ ▲", arguments: [formatbytes(state.outbounds)]))
-        Text(String(format: "%@ ▼", arguments: [formatbytes(state.inbounds)]))
+        .font(.system(size: 11))
+        .lineLimit(1)
+        .truncationMode(.tail)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .help(state.name)
+
+      VStack(alignment: .trailing, spacing: 1) {
+        HStack(spacing: 2) {
+          Image(systemName: "arrow.up")
+            .font(.system(size: 7, weight: .medium))
+            .foregroundColor(.orange)
+          Text(formatbytes(state.outbounds))
+            .font(.system(size: 9, weight: .medium, design: .monospaced))
+        }
+        HStack(spacing: 2) {
+          Image(systemName: "arrow.down")
+            .font(.system(size: 7, weight: .medium))
+            .foregroundColor(.cyan)
+          Text(formatbytes(state.inbounds))
+            .font(.system(size: 9, weight: .medium, design: .monospaced))
+        }
       }
       .fixedSize()
-      .font(.system(size: 9, weight: .medium))
-      .frame(width: 60, alignment: Alignment.trailing)
     }
+    .padding(.horizontal, 12)
+    .padding(.vertical, 5)
   }
 }
 
 struct StatusBarMenuView_Previews: PreviewProvider {
   static let data = { () -> IOStates in
     let ret = IOStates()
+    ret.total = NetworkState(pid: 0, name: "total", inbounds: 10240, outbounds: 2048)
     ret.items = [
-      NetworkState(pid: 1, name: "process", inbounds: 512, outbounds: 512),
-      NetworkState(pid: 2, name: "process", inbounds: 64, outbounds: 1),
+      NetworkState(pid: 1, name: "Chrome", inbounds: 5120, outbounds: 1024),
+      NetworkState(pid: 2, name: "Slack", inbounds: 2048, outbounds: 512),
+      NetworkState(pid: 3, name: "Terminal", inbounds: 1024, outbounds: 256),
     ]
     return ret
   }()
   static var previews: some View {
     StatusBarDetailsView(iostates: data)
-      .frame(width: 200.0)
   }
 }
 
 struct StatusBarDetailsItemView_Previews: PreviewProvider {
   static var previews: some View {
-    StatusBarDetailsItemView(state: NetworkState(name: "process", inbounds: 1023, outbounds: 1000))
+    StatusBarDetailsItemView(state: NetworkState(pid: 1, name: "Chrome", inbounds: 10240, outbounds: 2048))
+      .frame(width: 280)
   }
 }

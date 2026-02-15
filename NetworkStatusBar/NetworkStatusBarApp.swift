@@ -11,11 +11,11 @@ import SwiftUI
 struct NetworkStatusBarApp: App {
   @NSApplicationDelegateAdaptor(AppDelegate.self) var appdelegate
   var body: some Scene {
-    WindowGroup {}
+    Settings {
+      EmptyView()
+    }
   }
 }
-
-var StatusBarWidth = CGFloat(49)
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -26,8 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func onUpdate(update: NetworkStates) {
     DispatchQueue.main.async {
-      self.iostates.total = update.Total
-      self.iostates.items = update.Items.filter({ item in
+      self.iostates.total = update.total
+      self.iostates.items = update.items.filter({ item in
         return item.total > 1024
       })
     }
@@ -38,8 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   func applicationDidFinishLaunching(_ notification: Notification) {
-    statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    statusItem?.length = StatusBarWidth
+    statusItem = NSStatusBar.system.statusItem(withLength: 62)
 
     networkStatus.callback = onUpdate
     DispatchQueue.global(qos: .userInteractive).async {
@@ -48,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     if let button = statusItem?.button {
       let statusbarview = NSHostingView(rootView: StatusBarView(iostates: iostates))
-      statusbarview.frame = button.frame
+      statusbarview.frame = NSRect(x: 0, y: 0, width: 62, height: button.frame.height)
       button.addSubview(statusbarview)
     }
 
@@ -57,13 +56,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       menu.items = [
         {
           let menuitem = NSMenuItem()
-          menuitem.view = NSHostingView(rootView: StatusBarDetailsView(iostates: iostates))
-          // ListTableCellView has 16dp at left and right,ListScroll has a 15dp width
-          // 16 * 2 + 15 = 47
-          // Out DetailsItem has min length 200
-          menuitem.view?.setFrameSize(NSSize(width: 247, height: 100))
+          let detailsView = StatusBarDetailsView(iostates: iostates)
+          let hostingView = NSHostingView(rootView: detailsView)
+          hostingView.setFrameSize(NSSize(width: 280, height: 320))
+          menuitem.view = hostingView
           return menuitem
         }(),
+        NSMenuItem.separator(),
         NSMenuItem(
           title: NSLocalizedString("quit", comment: "quit the application"),
           action: #selector(quit),
@@ -72,6 +71,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       ]
       return menu
     }()
+  }
+
+  func applicationWillTerminate(_ notification: Notification) {
+    networkStatus.stop()
   }
 
   @IBAction func quit(obj: Any) {

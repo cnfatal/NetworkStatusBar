@@ -5,4 +5,6 @@
   Created by fatal cn on 2021/10/31.
   
 */
-"quit"="quit";
+"quit"="Quit";
+"network_traffic"="Network Traffic";
+"no_activity"="No network activity";
