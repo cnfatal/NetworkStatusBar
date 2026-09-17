@@ -71,6 +71,20 @@ open class NetworkDetails {
     process = nil
   }
 
+  /// nettop can be terminated mid-row, leaving a truncated line that makes the
+  /// CSV parser reject the entire sample. Drop any row whose field count does
+  /// not match the header's, so a single bad line cannot take out the sample.
+  private func sanitize(_ data: Data) -> Data {
+    guard let text = String(data: data, encoding: .utf8) else { return data }
+    let lines = text.split(separator: "\n", omittingEmptySubsequences: true)
+    guard let header = lines.first else { return data }
+    let expected = header.split(separator: ",", omittingEmptySubsequences: false).count
+    let kept = lines.filter {
+      $0.split(separator: ",", omittingEmptySubsequences: false).count == expected
+    }
+    return Data(kept.joined(separator: "\n").utf8)
+  }
+
   func update(data: Data) {
     if data.isEmpty {
       return
@@ -78,12 +92,17 @@ open class NetworkDetails {
     lock.lock()
     defer { lock.unlock() }
 
-    var dataframe = (try? DataFrame(csvData: data, columns: Columns)) ?? DataFrame.init()
-    if #available(macOS 13.0, *) {
-      dataframe.renameColumn("Column 0", to: ColumnName)
-    } else {
-      dataframe.renameColumn("", to: ColumnName)
+    var dataframe = (try? DataFrame(csvData: sanitize(data), columns: Columns)) ?? DataFrame.init()
+
+    // Bail out before renaming: `renameColumn` traps when the column is absent,
+    // which would turn a malformed sample into a crash.
+    guard !dataframe.columns.isEmpty else {
+      return
     }
+    // The process column is the unnamed one requested in `Columns`; read back
+    // the name the parser actually gave it instead of assuming the default.
+    dataframe.renameColumn(dataframe.columns[0].name, to: ColumnName)
+
     if laststate.isEmpty {
       laststate = dataframe
     }
@@ -91,39 +110,43 @@ open class NetworkDetails {
       laststate = dataframe
     }
 
-    var joined = dataframe.joined(laststate, on: ColumnName, kind: JoinKind.right)
+    // A full outer join keeps processes that appeared since the last sample.
+    // nettop keeps listing idle processes, so a name missing from `dataframe`
+    // means the process exited. Deltas are clamped at zero: an exiting process
+    // or a reset counter must never subtract from the total.
+    var joined = dataframe.joined(laststate, on: ColumnName, kind: JoinKind.full)
     joined.combineColumns("left.bytes_in", "right.bytes_in", into: ColumnBytesIn) {
-      ($0 ?? 0) - ($1 ?? 0)
+      max(0, ($0 ?? 0) - ($1 ?? 0))
     }
     joined.combineColumns("left.bytes_out", "right.bytes_out", into: ColumnBytesOut) {
-      ($0 ?? 0) - ($1 ?? 0)
+      max(0, ($0 ?? 0) - ($1 ?? 0))
     }
 
-    // 0:"name",1:"bytes_in",2:"bytes_out"
-    let totalin = joined.columns[1].reduce(
-      0,
-      { x, y in
-        x + (y as? Int ?? 0)
-      })
-    let totalout = joined.columns[2].reduce(
-      0,
-      { x, y in
-        x + (y as? Int ?? 0)
-      })
-    var items = joined.rows.map { r -> NetworkState in
-      var state = NetworkState()
-      let splits = (r[ColumnName] as? String ?? "").split(separator: ".", maxSplits: 1)
-      state.name = String(splits.first ?? "")
-      state.pid = Int(splits.last ?? "") ?? 0
-      state.inbounds = r[ColumnBytesIn] as? Int ?? 0
-      state.outbounds = r[ColumnBytesOut] as? Int ?? 0
-      state.total = state.inbounds + state.outbounds
-      return state
-    }
+    let live = Set(dataframe[ColumnName].compactMap { $0 as? String })
+    var items = joined.rows
+      .filter { live.contains($0[ColumnName] as? String ?? "") }
+      .map { r -> NetworkState in
+        var state = NetworkState()
+        // nettop emits "<name>.<pid>" and the name itself may contain dots,
+        // so split on the last one rather than the first.
+        let raw = r[ColumnName] as? String ?? ""
+        if let dot = raw.lastIndex(of: ".") {
+          state.name = String(raw[raw.startIndex..<dot])
+          state.pid = Int(raw[raw.index(after: dot)...]) ?? 0
+        } else {
+          state.name = raw
+        }
+        state.inbounds = r[ColumnBytesIn] as? Int ?? 0
+        state.outbounds = r[ColumnBytesOut] as? Int ?? 0
+        state.total = state.inbounds + state.outbounds
+        return state
+      }
 
     items.sort { $0.total > $1.total }
     let ret = NetworkStates(
-      total: NetworkState(inbounds: totalin, outbounds: totalout),
+      total: NetworkState(
+        inbounds: items.reduce(0) { $0 + $1.inbounds },
+        outbounds: items.reduce(0) { $0 + $1.outbounds }),
       items: items)
 
     self.callback(ret)
