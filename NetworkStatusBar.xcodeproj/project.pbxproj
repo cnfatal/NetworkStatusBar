@@ -3,28 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19954FE6F4C6B80B4D8B2C51 /* TrafficModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476331C693EA26DE067BE521 /* TrafficModel.swift */; };
-		37240290D81399B9C7147F53 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACBE296641F57D61A92842 /* Formatting.swift */; };
-		4028739F7AC1F48DE1A54B0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB826E7B3B17F90340EA24 /* AppDelegate.swift */; };
-		5B1E4C10713B068B85F4A12F /* TrafficSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39C315C6BBD49E0314BF03B /* TrafficSampler.swift */; };
-		638AD6A39D13A0709B06107A /* TrafficSamplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60A38164DA8B1B731A4BB66 /* TrafficSamplerTests.swift */; };
-		69FA00AB2911BDC6EDA49BC4 /* MenuBarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25E2EE698C90C76F491EBE /* MenuBarLabel.swift */; };
-		990658A51A01547166716F0D /* TrafficPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC65D16307E52F32292FE4 /* TrafficPanel.swift */; };
-		A8AA23BF60F7F8F7ED4DDB5E /* TrafficChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511367FB7F3A95843D2CDCC /* TrafficChart.swift */; };
-		AA0001012026021600000001 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0001002026021600000001 /* AppSettings.swift */; };
-		AA0001032026021600000002 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0001022026021600000002 /* SettingsView.swift */; };
-		BE3EC903272FA6E6005AC578 /* NetworkStatusBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */; };
-		BE3EC907272FA6E7005AC578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC906272FA6E7005AC578 /* Assets.xcassets */; };
-		BE3EC90A272FA6E7005AC578 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC909272FA6E7005AC578 /* Preview Assets.xcassets */; };
-		BE3EC915272FA6E7005AC578 /* NetworkStatusBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC914272FA6E7005AC578 /* NetworkStatusBarTests.swift */; };
-		BE3EC91F272FA6E7005AC578 /* NetworkStatusBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC91E272FA6E7005AC578 /* NetworkStatusBarUITests.swift */; };
-		BE3EC921272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC920272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift */; };
-		BE3EC935272FA827005AC578 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE3EC937272FA827005AC578 /* Localizable.strings */; };
-		D85873E7C4A9AEE7DBB54C30 /* TrafficTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A206D0DBE8B22596B688A5 /* TrafficTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,33 +27,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1EFB826E7B3B17F90340EA24 /* AppDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		38ACBE296641F57D61A92842 /* Formatting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
-		476331C693EA26DE067BE521 /* TrafficModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrafficModel.swift; sourceTree = "<group>"; };
-		4C25E2EE698C90C76F491EBE /* MenuBarLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuBarLabel.swift; sourceTree = "<group>"; };
-		59DC65D16307E52F32292FE4 /* TrafficPanel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrafficPanel.swift; sourceTree = "<group>"; };
-		A511367FB7F3A95843D2CDCC /* TrafficChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrafficChart.swift; sourceTree = "<group>"; };
-		AA0001002026021600000001 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		AA0001022026021600000002 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BE3EC8FF272FA6E6005AC578 /* NetworkStatusBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkStatusBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarApp.swift; sourceTree = "<group>"; };
-		BE3EC906272FA6E7005AC578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BE3EC909272FA6E7005AC578 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BE3EC90B272FA6E7005AC578 /* NetworkStatusBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetworkStatusBar.entitlements; sourceTree = "<group>"; };
 		BE3EC910272FA6E7005AC578 /* NetworkStatusBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkStatusBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE3EC914272FA6E7005AC578 /* NetworkStatusBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarTests.swift; sourceTree = "<group>"; };
 		BE3EC91A272FA6E7005AC578 /* NetworkStatusBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkStatusBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE3EC91E272FA6E7005AC578 /* NetworkStatusBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarUITests.swift; sourceTree = "<group>"; };
-		BE3EC920272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusBarUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BE3EC938272FA846005AC578 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BE3EC93C272FC5E1005AC578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BE3EC93E272FC761005AC578 /* statusbar-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusbar-snapshot.png"; sourceTree = "<group>"; };
 		BE3EC93F272FC7A1005AC578 /* details-snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details-snapshot.png"; sourceTree = "<group>"; };
 		BE3EC940272FC8CD005AC578 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		D39C315C6BBD49E0314BF03B /* TrafficSampler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrafficSampler.swift; sourceTree = "<group>"; };
-		D60A38164DA8B1B731A4BB66 /* TrafficSamplerTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrafficSamplerTests.swift; sourceTree = "<group>"; };
-		F8A206D0DBE8B22596B688A5 /* TrafficTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrafficTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BE3EC901272FA6E6005AC578 /* NetworkStatusBar */ = {
+		isa = PBXFileSystemSynchronizedRootGroup;
+		path = NetworkStatusBar;
+		sourceTree = "<group>";
+		};
+		BE3EC913272FA6E7005AC578 /* NetworkStatusBarTests */ = {
+		isa = PBXFileSystemSynchronizedRootGroup;
+		path = NetworkStatusBarTests;
+		sourceTree = "<group>";
+		};
+		BE3EC91D272FA6E7005AC578 /* NetworkStatusBarUITests */ = {
+		isa = PBXFileSystemSynchronizedRootGroup;
+		path = NetworkStatusBarUITests;
+		sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BE3EC8FC272FA6E6005AC578 /* Frameworks */ = {
@@ -121,52 +102,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BE3EC901272FA6E6005AC578 /* NetworkStatusBar */ = {
-			isa = PBXGroup;
-			children = (
-				BE3EC902272FA6E6005AC578 /* NetworkStatusBarApp.swift */,
-				AA0001002026021600000001 /* AppSettings.swift */,
-				BE3EC937272FA827005AC578 /* Localizable.strings */,
-				AA0001022026021600000002 /* SettingsView.swift */,
-				BE3EC906272FA6E7005AC578 /* Assets.xcassets */,
-				BE3EC90B272FA6E7005AC578 /* NetworkStatusBar.entitlements */,
-				BE3EC908272FA6E7005AC578 /* Preview Content */,
-				A511367FB7F3A95843D2CDCC /* TrafficChart.swift */,
-				F8A206D0DBE8B22596B688A5 /* TrafficTypes.swift */,
-				D39C315C6BBD49E0314BF03B /* TrafficSampler.swift */,
-				476331C693EA26DE067BE521 /* TrafficModel.swift */,
-				4C25E2EE698C90C76F491EBE /* MenuBarLabel.swift */,
-				59DC65D16307E52F32292FE4 /* TrafficPanel.swift */,
-				38ACBE296641F57D61A92842 /* Formatting.swift */,
-				1EFB826E7B3B17F90340EA24 /* AppDelegate.swift */,
-			);
-			path = NetworkStatusBar;
-			sourceTree = "<group>";
-		};
 		BE3EC908272FA6E7005AC578 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
 				BE3EC909272FA6E7005AC578 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		BE3EC913272FA6E7005AC578 /* NetworkStatusBarTests */ = {
-			isa = PBXGroup;
-			children = (
-				BE3EC914272FA6E7005AC578 /* NetworkStatusBarTests.swift */,
-				D60A38164DA8B1B731A4BB66 /* TrafficSamplerTests.swift */,
-			);
-			path = NetworkStatusBarTests;
-			sourceTree = "<group>";
-		};
-		BE3EC91D272FA6E7005AC578 /* NetworkStatusBarUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BE3EC91E272FA6E7005AC578 /* NetworkStatusBarUITests.swift */,
-				BE3EC920272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift */,
-			);
-			path = NetworkStatusBarUITests;
 			sourceTree = "<group>";
 		};
 		BE3EC93D272FC706005AC578 /* docs */ = {
@@ -193,6 +134,9 @@
 			);
 			dependencies = (
 			);
+		fileSystemSynchronizedGroups = (
+			BE3EC901272FA6E6005AC578 /* NetworkStatusBar */,
+		);
 			name = NetworkStatusBar;
 			productName = NetworkStatusBar;
 			productReference = BE3EC8FF272FA6E6005AC578 /* NetworkStatusBar.app */;
@@ -211,6 +155,9 @@
 			dependencies = (
 				BE3EC912272FA6E7005AC578 /* PBXTargetDependency */,
 			);
+		fileSystemSynchronizedGroups = (
+			BE3EC913272FA6E7005AC578 /* NetworkStatusBarTests */,
+		);
 			name = NetworkStatusBarTests;
 			productName = NetworkStatusBarTests;
 			productReference = BE3EC910272FA6E7005AC578 /* NetworkStatusBarTests.xctest */;
@@ -229,6 +176,9 @@
 			dependencies = (
 				BE3EC91C272FA6E7005AC578 /* PBXTargetDependency */,
 			);
+		fileSystemSynchronizedGroups = (
+			BE3EC91D272FA6E7005AC578 /* NetworkStatusBarUITests */,
+		);
 			name = NetworkStatusBarUITests;
 			productName = NetworkStatusBarUITests;
 			productReference = BE3EC91A272FA6E7005AC578 /* NetworkStatusBarUITests.xctest */;
@@ -283,10 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE3EC90A272FA6E7005AC578 /* Preview Assets.xcassets in Resources */,
-				BE3EC935272FA827005AC578 /* Localizable.strings in Resources */,
-				BE3EC907272FA6E7005AC578 /* Assets.xcassets in Resources */,
-			);
+		);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BE3EC90E272FA6E7005AC578 /* Resources */ = {
@@ -310,36 +257,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE3EC903272FA6E6005AC578 /* NetworkStatusBarApp.swift in Sources */,
-				AA0001012026021600000001 /* AppSettings.swift in Sources */,
-				AA0001032026021600000002 /* SettingsView.swift in Sources */,
-				A8AA23BF60F7F8F7ED4DDB5E /* TrafficChart.swift in Sources */,
-				D85873E7C4A9AEE7DBB54C30 /* TrafficTypes.swift in Sources */,
-				5B1E4C10713B068B85F4A12F /* TrafficSampler.swift in Sources */,
-				19954FE6F4C6B80B4D8B2C51 /* TrafficModel.swift in Sources */,
-				69FA00AB2911BDC6EDA49BC4 /* MenuBarLabel.swift in Sources */,
-				990658A51A01547166716F0D /* TrafficPanel.swift in Sources */,
-				37240290D81399B9C7147F53 /* Formatting.swift in Sources */,
-				4028739F7AC1F48DE1A54B0A /* AppDelegate.swift in Sources */,
-			);
+		);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BE3EC90C272FA6E7005AC578 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE3EC915272FA6E7005AC578 /* NetworkStatusBarTests.swift in Sources */,
-				638AD6A39D13A0709B06107A /* TrafficSamplerTests.swift in Sources */,
-			);
+		);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BE3EC916272FA6E7005AC578 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE3EC91F272FA6E7005AC578 /* NetworkStatusBarUITests.swift in Sources */,
-				BE3EC921272FA6E7005AC578 /* NetworkStatusBarUITestsLaunchTests.swift in Sources */,
-			);
+		);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
@@ -357,16 +289,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		BE3EC937272FA827005AC578 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE3EC938272FA846005AC578 /* zh-Hans */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BE3EC922272FA6E7005AC578 /* Debug */ = {
