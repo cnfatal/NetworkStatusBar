@@ -33,13 +33,16 @@ jobs:
           cp -R "${{ runner.temp }}/NetworkStatusBar.xcarchive/Products/Applications/NetworkStatusBar.app" \
             "${{ runner.temp }}/NetworkStatusBar.app"
           cd "${{ runner.temp }}" && zip -r NetworkStatusBar.zip NetworkStatusBar.app
+          cd "${{ runner.temp }}" && tar -czf NetworkStatusBar.tar.gz NetworkStatusBar.app
 
       - name: Upload artifact
         if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-artifact@v4
         with:
           name: NetworkStatusBar
-          path: ${{ runner.temp }}/NetworkStatusBar.zip
+          path: |
+            ${{ runner.temp }}/NetworkStatusBar.zip
+            ${{ runner.temp }}/NetworkStatusBar.tar.gz
 
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')
@@ -48,5 +51,6 @@ jobs:
         run: |
           gh release create "${{ github.ref_name }}" \
             "${{ runner.temp }}/NetworkStatusBar.zip" \
+            "${{ runner.temp }}/NetworkStatusBar.tar.gz" \
             --title "${{ github.ref_name }}" \
             --generate-notes
