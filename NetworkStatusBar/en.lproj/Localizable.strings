@@ -15,3 +15,7 @@
 "blacklist"="Process Blacklist";
 "blacklist_empty"="No blacklisted processes";
 "select_process"="Select process";
+"sort_by"="Sort By";
+"sort_total"="Total";
+"sort_down"="Download";
+"sort_up"="Upload";

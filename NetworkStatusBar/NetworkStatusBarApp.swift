@@ -5,164 +5,21 @@
 //  Created by fatal cn on 2021/10/31.
 //
 
-import Combine
 import SwiftUI
 
 @main
 struct NetworkStatusBarApp: App {
-  @NSApplicationDelegateAdaptor(AppDelegate.self) var appdelegate
+  /// Owns the status item, the panel and the sampler. The status item is built
+  /// by hand rather than with `MenuBarExtra` because the label has to render as
+  /// two lines at an exact width, and `MenuBarExtra` both pads its label and
+  /// lays it out with the menu bar's own metrics.
+  @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
   var body: some Scene {
+    // The settings window is presented by the delegate; this only satisfies the
+    // requirement that an App declare a scene.
     Settings {
       EmptyView()
-    }
-  }
-}
-
-class AppDelegate: NSObject, NSApplicationDelegate {
-
-  var iostates: IOStates = IOStates()
-  var statusItem: NSStatusItem?
-
-  var networkStatus: NetworkDetails = NetworkDetails()
-  let settings = AppSettings.shared
-  private var cancellables = Set<AnyCancellable>()
-  private var settingsWindow: NSWindow?
-
-  func onUpdate(update: NetworkStates) {
-    DispatchQueue.main.async {
-      self.iostates.total = update.total
-      let threshold = self.settings.minTrafficThreshold
-      // Track all seen process names
-      for item in update.items where !item.name.isEmpty {
-        self.iostates.seenProcessNames.insert(item.name)
-      }
-      self.iostates.items = update.items.filter { item in
-        return item.total >= threshold && !self.settings.isBlacklisted(item.name)
-      }
-    }
-  }
-
-  func applicationWillFinishLaunching(_ notification: Notification) {
-    NSApp.setActivationPolicy(.prohibited)
-  }
-
-  func applicationDidFinishLaunching(_ notification: Notification) {
-    statusItem = NSStatusBar.system.statusItem(withLength: 62)
-
-    networkStatus.callback = onUpdate
-    startNetworkMonitoring()
-
-    // Watch for refresh interval changes
-    settings.$refreshInterval
-      .dropFirst()
-      .removeDuplicates()
-      .receive(on: DispatchQueue.main)
-      .sink { [weak self] _ in
-        self?.restartNetworkMonitoring()
-      }
-      .store(in: &cancellables)
-
-    if let button = statusItem?.button {
-      let statusbarview = NSHostingView(rootView: StatusBarView(iostates: iostates))
-      statusbarview.frame = NSRect(x: 0, y: 0, width: 62, height: button.frame.height)
-      button.addSubview(statusbarview)
-    }
-
-    setupMenu()
-  }
-
-  private func startNetworkMonitoring() {
-    DispatchQueue.global(qos: .userInteractive).async {
-      self.networkStatus.run(refreshSeconds: self.settings.refreshInterval)
-    }
-  }
-
-  private func restartNetworkMonitoring() {
-    networkStatus.stop()
-    startNetworkMonitoring()
-  }
-
-  private func setupMenu() {
-    let menu = NSMenu()
-    menu.delegate = self
-
-    let detailsItem = NSMenuItem()
-    let detailsView = StatusBarDetailsView(iostates: iostates)
-    let hostingView = NSHostingView(rootView: detailsView)
-    hostingView.setFrameSize(NSSize(width: 280, height: 320))
-    detailsItem.view = hostingView
-
-    menu.items = [
-      detailsItem,
-      NSMenuItem.separator(),
-      {
-        let item = NSMenuItem(
-          title: NSLocalizedString("settings", comment: "Settings"),
-          action: #selector(openSettings),
-          keyEquivalent: ","
-        )
-        item.image = NSImage(systemSymbolName: "gearshape", accessibilityDescription: "Settings")
-        return item
-      }(),
-      {
-        let item = NSMenuItem(
-          title: NSLocalizedString("quit", comment: "quit the application"),
-          action: #selector(quit),
-          keyEquivalent: "q"
-        )
-        item.image = NSImage(systemSymbolName: "power", accessibilityDescription: "Quit")
-        return item
-      }(),
-    ]
-
-    statusItem?.menu = menu
-  }
-
-  @objc func openSettings() {
-    if let window = settingsWindow {
-      window.makeKeyAndOrderFront(nil)
-      NSApp.activate(ignoringOtherApps: true)
-      return
-    }
-
-    let settingsView = SettingsView(seenProcessNames: iostates.seenProcessNames)
-    let hostingController = NSHostingController(rootView: settingsView)
-
-    let window = NSWindow(contentViewController: hostingController)
-    window.title = NSLocalizedString("settings", comment: "Settings")
-    window.styleMask = [.titled, .closable]
-    window.center()
-    window.isReleasedWhenClosed = false
-    window.delegate = self
-    window.makeKeyAndOrderFront(nil)
-
-    NSApp.activate(ignoringOtherApps: true)
-    settingsWindow = window
-  }
-
-  func applicationWillTerminate(_ notification: Notification) {
-    networkStatus.stop()
-  }
-
-  @IBAction func quit(obj: Any) {
-    NSApp.terminate(nil)
-  }
-}
-
-extension AppDelegate: NSWindowDelegate {
-  func windowWillClose(_ notification: Notification) {
-    if let window = notification.object as? NSWindow, window == settingsWindow {
-      settingsWindow = nil
-    }
-  }
-}
-
-extension AppDelegate: NSMenuDelegate {
-  func menuWillOpen(_ menu: NSMenu) {
-    // Resize details view based on content
-    if let detailsView = menu.items.first?.view as? NSHostingView<StatusBarDetailsView> {
-      let fittingSize = detailsView.fittingSize
-      detailsView.setFrameSize(NSSize(width: 280, height: max(fittingSize.height, 80)))
     }
   }
 }

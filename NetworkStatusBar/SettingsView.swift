@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-  @ObservedObject var settings = AppSettings.shared
+  @Bindable var settings = AppSettings.shared
   @State private var selectedProcess: String = ""
   var seenProcessNames: Set<String> = []
 
@@ -52,7 +52,22 @@ struct SettingsView: View {
         .padding(.top, 4)
       }
 
-      // Section 3: Process Blacklist
+      // Section 3: Sort order
+      GroupBox(label: Label(
+        NSLocalizedString("sort_by", comment: ""),
+        systemImage: "arrow.up.arrow.down"
+      )) {
+        Picker("", selection: $settings.sortKey) {
+          Text(NSLocalizedString("sort_total", comment: "")).tag(SortKey.total)
+          Text(NSLocalizedString("sort_down", comment: "")).tag(SortKey.download)
+          Text(NSLocalizedString("sort_up", comment: "")).tag(SortKey.upload)
+        }
+        .pickerStyle(.segmented)
+        .labelsHidden()
+        .padding(.top, 4)
+      }
+
+      // Section 4: Process Blacklist
       GroupBox(label: Label(
         NSLocalizedString("blacklist", comment: ""),
         systemImage: "nosign"
@@ -66,7 +81,7 @@ struct SettingsView: View {
                 Text(name).tag(name)
               }
             }
-            .onChange(of: selectedProcess) { value in
+            .onChange(of: selectedProcess) { _, value in
               guard !value.isEmpty else { return }
               settings.addToBlacklist(value)
               selectedProcess = ""

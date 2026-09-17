@@ -15,3 +15,7 @@
 "blacklist"="进程黑名单";
 "blacklist_empty"="暂无黑名单进程";
 "select_process"="选择进程";
+"sort_by"="排序方式";
+"sort_total"="总量";
+"sort_down"="下行";
+"sort_up"="上行";
