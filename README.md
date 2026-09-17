@@ -61,6 +61,8 @@ A macOS menu bar tool for monitoring real-time network traffic per process, writ
 
 ## Install
 
+> **Requires macOS 14 (Sonoma) or later.**
+
 ### Homebrew
 
 ```bash
